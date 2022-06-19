@@ -44,47 +44,21 @@ export default function Rightbar({ profile }) {
         </div>
         <h4 className="rightbarTitle">User friends</h4>
         <div className="rightbarFollowings">
-          <div className="rightbarFollowing">
-            <img src="assets/person/1.jpeg" alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">John Lee</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img src="assets/person/1.jpeg" alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">John Lee</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img src="assets/person/1.jpeg" alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">John Lee</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img src="assets/person/1.jpeg" alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">John Lee</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img src="assets/person/1.jpeg" alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">John Lee</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img src="assets/person/1.jpeg" alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">John Lee</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img src="assets/person/1.jpeg" alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">John Lee</span>
-          </div>
-          <div className="rightbarFollowing">
-            <img src="assets/person/1.jpeg" alt="" className="rightbarFollowingImg" />
-            <span className="rightbarFollowingName">John Lee</span>
-          </div>
+          {Users.map((u) => {
+            return (
+              <div key={u.id} className="rightbarFollowing">
+                <img src={u.profilePicture} alt="" className="rightbarFollowingImg" />
+                <span className="rightbarFollowingName">{u.username}</span>
+              </div>
+            );
+          })}
         </div>
       </>
     );
   };
   return (
     <div className="rightbar">
-      <div className="rightbarWrapper">
-        <ProfileRightbar />
-      </div>
+      <div className="rightbarWrapper">{profile ? <ProfileRightbar /> : <HomeRightbar />}</div>
     </div>
   );
 }

@@ -83,6 +83,12 @@
 .rightbarFollowing {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px 20px;
   cursor: pointer;
+}
+
+.rightbarFollowingName{
+  margin-top: 10px;
 }
