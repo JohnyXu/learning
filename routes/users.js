@@ -43,6 +43,7 @@ router.delete('/:id', async (req, res) => {
     return res.status(403).json('You can delete only your account');
   }
 });
+
 //get a user
 router.get('/:id', async (req, res) => {
   try {
@@ -82,6 +83,7 @@ router.put('/:id/follow', async (req, res) => {
     res.status(403).json("you can't follow yourself");
   }
 });
+
 //unfollow a user
 router.put('/:id/unfollow', async (req, res) => {
   if (req.body.userId !== req.params.id) {
