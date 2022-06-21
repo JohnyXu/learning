@@ -4,16 +4,17 @@ import Online from '../online/Online';
 import './rightbar.css';
 
 export default function Rightbar({ profile }) {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const HomeRightbar = () => {
     return (
       <>
         <div className="birthdayContainer">
-          <img src="assets/gift.png" alt="" className="birthdayImg" />
+          <img src={PF + 'gift.png'} alt="" className="birthdayImg" />
           <span className="birthdayText">
             <b>Sarah</b>&nbsp; and &nbsp;<b> 2 other friends</b> have a birthday today
           </span>
         </div>
-        <img src="assets/ad.png" alt="" className="rightbarAd" />
+        <img src={PF + 'ad.png'} alt="" className="rightbarAd" />
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
           {Users.map((u) => {
@@ -47,7 +48,7 @@ export default function Rightbar({ profile }) {
           {Users.map((u) => {
             return (
               <div key={u.id} className="rightbarFollowing">
-                <img src={u.profilePicture} alt="" className="rightbarFollowingImg" />
+                <img src={PF + u.profilePicture} alt="" className="rightbarFollowingImg" />
                 <span className="rightbarFollowingName">{u.username}</span>
               </div>
             );

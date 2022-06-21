@@ -6,11 +6,13 @@ import AddLocationIcon from '@mui/icons-material/AddLocation';
 import InsertEmoticonIcon from '@mui/icons-material/InsertEmoticon';
 
 export default function Share() {
+  const PF = process.env.REACT_APP_PUBLIC_FOLDER;
+
   return (
     <div className="share">
       <div className="shareWrapper">
         <div className="shareTop">
-          <img src="/assets/person/1.jpeg" alt="" className="shareProfileImg" />
+          <img src={PF + 'person/1.jpeg'} alt="" className="shareProfileImg" />
           <input placeholder="What's your mind Johny?" className="shareInput" />
         </div>
         <hr className="shareHr" />
