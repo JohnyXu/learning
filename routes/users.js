@@ -2,10 +2,6 @@ const router = require('express').Router();
 const bcrypt = require('bcrypt');
 const User = require('../models/User');
 
-router.get('/', (req, res) => {
-  res.send('hey user route');
-});
-
 //update user
 router.put('/:id', async (req, res) => {
   if (req.body.userId === req.params.id || req.body.isAdmin) {
