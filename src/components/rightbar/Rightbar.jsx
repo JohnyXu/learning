@@ -2,7 +2,6 @@ import axios from 'axios';
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
-import { Users } from '../../dummyData';
 import Online from '../online/Online';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
@@ -12,21 +11,23 @@ export default function Rightbar({ user }) {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
   const [friends, setFriends] = useState([]);
   const { user: currentUser, dispatch } = useContext(AuthContext);
-  const uesrId = user ? user._id : undefined;
 
-  const [followed, setFollowed] = useState(currentUser.followings.includes(uesrId));
+  const [followed, setFollowed] = useState(currentUser.followings.includes(user?._id));
 
   useEffect(() => {
     const getFriends = async () => {
-      try {
-        const friendList = await axios.get('/users/friends/' + uesrId);
-        setFriends(friendList.data);
-      } catch (error) {
-        console.log(error);
+      if (user?._id) {
+        console.log('id:', user._id);
+        try {
+          const friendList = await axios.get('/users/friends/' + user._id);
+          setFriends(friendList.data);
+        } catch (error) {
+          console.log(error);
+        }
       }
     };
     getFriends();
-  }, [uesrId]);
+  }, [user]);
 
   const handleClick = async () => {
     try {
@@ -55,8 +56,8 @@ export default function Rightbar({ user }) {
         <img src={PF + 'ad.png'} alt="" className="rightbarAd" />
         <h4 className="rightbarTitle">Online Friends</h4>
         <ul className="rightbarFriendList">
-          {Users.map((u) => {
-            return <Online key={u.id} user={u} />;
+          {friends.map((u) => {
+            return <Online key={u._id} user={u} />;
           })}
         </ul>
       </>
@@ -93,7 +94,7 @@ export default function Rightbar({ user }) {
         <div className="rightbarFollowings">
           {friends.map((u) => {
             return (
-              <Link to={'/profile/' + u.username} key={u.id} style={{ textDecoration: 'none' }}>
+              <Link to={'/profile/' + u.username} key={u._id} style={{ textDecoration: 'none' }}>
                 <div className="rightbarFollowing">
                   <img
                     src={u.profilePicture ? PF + u.profilePicture : PF + 'person/noAvatar.png'}
