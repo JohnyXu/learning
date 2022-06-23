@@ -88,7 +88,7 @@ router.put('/:id/follow', async (req, res) => {
         });
         await currentUser.updateOne({
           $push: {
-            followins: req.params.id,
+            followings: req.params.id,
           },
         });
         res.status(200).json('user has been followed');
@@ -117,7 +117,7 @@ router.put('/:id/unfollow', async (req, res) => {
         });
         await currentUser.updateOne({
           $pull: {
-            followins: req.params.id,
+            followings: req.params.id,
           },
         });
         res.status(200).json('user has been unfollowed');
