@@ -28,6 +28,10 @@ export default function Register() {
       }
     }
   };
+
+  const loginClick = () => {
+    navigate('/login');
+  };
   return (
     <div className="register">
       <div className="registerWrapper">
@@ -70,7 +74,9 @@ export default function Register() {
               className="registerInput"
             />
             <button className="registerButton">Sign Up</button>
-            <button className="registerRegisterButton">register into account</button>
+            <button className="registerRegisterButton" onClick={loginClick}>
+              register into account
+            </button>
           </form>
         </div>
       </div>
