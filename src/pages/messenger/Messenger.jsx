@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
 import { useEffect } from 'react';
 import ChatOnline from '../../components/chatOnline/ChatOnline';
-import Conversaction from '../../components/components/Conversaction';
+import Conversaction from '../../components/conversation/Conversation';
 import Message from '../../components/message/Message';
 import Topbar from '../../components/topbar/Topbar';
 import { AuthContext } from '../../context/AuthContext';
