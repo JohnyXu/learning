@@ -8,14 +8,25 @@ import { AuthContext } from '../../context/AuthContext';
 import axios from 'axios';
 import './messenger.css';
 import { useRef } from 'react';
+import { io } from 'socket.io-client';
 
 export default function Messenger() {
   const [conversations, setConversations] = useState([]);
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
   const [newMessage, setNewMessage] = useState('');
+  const [socket, setSocket] = useState(null);
   const { user } = useContext(AuthContext);
   const scrollRef = useRef();
+
+  useEffect(() => {
+    setSocket(io('ws://localhost:8900'));
+  }, []);
+  useEffect(() => {
+    socket?.on('welcome', (message) => {
+      console.log(message);
+    });
+  }, [socket]);
 
   useEffect(() => {
     const getConversations = async () => {
