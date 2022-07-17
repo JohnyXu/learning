@@ -3,13 +3,16 @@ import './topbar.css';
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import LanguageIcon from '@material-ui/icons/Language';
 import SettingsIcon from '@material-ui/icons/Settings';
+import { Link } from 'react-router-dom';
 
 export default function Topbar() {
   return (
     <div className="topbar">
       <div className="topbarWrapper">
         <div className="topLeft">
-          <span className="logo">FlyingBird</span>
+          <Link to="/" className="link">
+            <span className="logo">FlyingBird</span>
+          </Link>
         </div>
         <div className="topRight">
           <div className="topbarIconContainer">
