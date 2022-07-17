@@ -14,6 +14,7 @@ import WorkOutlineIcon from '@material-ui/icons/WorkOutline';
 import ReportIcon from '@material-ui/icons/Report';
 
 import './sidebar.css';
+import { Link } from 'react-router-dom';
 
 export default function Sidebar() {
   return (
@@ -39,15 +40,18 @@ export default function Sidebar() {
         <div className="sidebarMenu">
           <h3 className="sidebarTitle">Quick Menu</h3>
           <ul className="sidebarList">
-            <li className="sidebarListItem">
-              <PermIdentityIcon className="sidebarIcon" />
-              Users
-            </li>
-
-            <li className="sidebarListItem">
-              <StorefrontIcon className="sidebarIcon" />
-              Products
-            </li>
+            <Link to="/users" className="link">
+              <li className="sidebarListItem">
+                <PermIdentityIcon className="sidebarIcon" />
+                Users
+              </li>
+            </Link>
+            <Link to="/products" className="link">
+              <li className="sidebarListItem">
+                <StorefrontIcon className="sidebarIcon" />
+                Products
+              </li>
+            </Link>
             <li className="sidebarListItem">
               <AttachMoneyIcon className="sidebarIcon" />
               Transactions
