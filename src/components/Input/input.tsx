@@ -1,9 +1,10 @@
-import React, { FC, ReactElement, InputHTMLAttributes, ChangeEvent } from 'react';
+import React, { ReactElement, InputHTMLAttributes, ChangeEvent, forwardRef } from 'react';
 import classNames from 'classnames';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import Icon from '../Icon/icon';
 
 type InputSize = 'lg' | 'sm';
+//Omit放法  可以忽略一个类型的一个属性  可以覆盖定义这个属性
 export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size'> {
   /**是否禁用 Input */
   disabled?: boolean;
@@ -25,9 +26,10 @@ export interface InputProps extends Omit<InputHTMLAttributes<HTMLElement>, 'size
  * // 这样引用
  * import { Input } from 'vikingship'
  * ~~~
+ *
  * 支持 HTMLInput 的所有基本属性
  */
-export const Input: FC<InputProps> = (props) => {
+export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { disabled, size, icon, prepend, append, style, ...restProps } = props;
   const cnames = classNames('viking-input-wrapper', {
     [`input-size-${size}`]: size,
@@ -54,10 +56,10 @@ export const Input: FC<InputProps> = (props) => {
           <Icon icon={icon} title={`title-${icon}`} />
         </div>
       )}
-      <input className="viking-input-inner" disabled={disabled} {...restProps} />
+      <input ref={ref} className="viking-input-inner" disabled={disabled} {...restProps} />
       {append && <div className="viking-input-group-append">{append}</div>}
     </div>
   );
-};
+});
 
 export default Input;

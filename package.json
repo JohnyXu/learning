@@ -16,8 +16,10 @@
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.9",
     "@types/react-transition-group": "^4.4.5",
+    "async-validator": "^4.2.5",
     "axios": "^1.1.3",
     "classnames": "^2.3.2",
+    "lodash-es": "^4.17.21",
     "node-sass": "^8.0.0",
     "react": "^18.2.0",
     "react-docgen-typescript-loader": "^3.7.2",
@@ -34,6 +36,11 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
+  },
+  "jest": {
+    "transformIgnorePatterns": [
+      "/node_modules/(?!(axios|lodash-es)/)"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -72,6 +79,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/preset-typescript": "^7.18.6",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-info": "^5.3.21",
@@ -82,8 +90,10 @@
     "@storybook/node-logger": "^6.5.13",
     "@storybook/preset-create-react-app": "^4.1.2",
     "@storybook/testing-library": "^0.0.13",
+    "@types/lodash-es": "^4.17.6",
     "babel-plugin-named-exports-order": "^0.0.2",
     "prop-types": "^15.8.1",
+    "ts-jest": "^29.0.3",
     "webpack": "^5.75.0"
   }
 }
