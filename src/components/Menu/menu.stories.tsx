@@ -1,9 +1,16 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+
 import Menu from './menu';
 import MenuItem from './menuItem';
 import SubMenu from './subMenu';
+
+export default {
+  title: 'Menu',
+  id: 'Menu',
+  component: Menu,
+} as ComponentMeta<typeof Menu>;
 
 export const defaultMenu = () => (
   <Menu
@@ -53,8 +60,3 @@ export const menuWithOpened = () => (
     </SubMenu>
   </Menu>
 );
-
-storiesOf('Menu Component', module)
-  .add('Menu', defaultMenu)
-  .add('纵向的 Menu', menuWithVertical)
-  .add('默认展开的纵向 Menu', menuWithOpened);

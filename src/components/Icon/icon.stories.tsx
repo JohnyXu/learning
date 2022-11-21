@@ -1,9 +1,25 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Icon from './icon';
 import Button from '../Button/button';
 
-const defaultIcon = () => (
+export default {
+  title: 'Icon',
+  id: 'Icon',
+  component: Icon,
+} as ComponentMeta<typeof Icon>;
+
+const Template: ComponentStory<typeof Icon> = (args) => <Icon {...args} />;
+
+export const SingleIcon = Template.bind({});
+SingleIcon.args = {
+  theme: 'warning',
+  icon: 'check',
+  size: '3x',
+};
+SingleIcon.storyName = 'Check Icon';
+
+export const defaultIcon = () => (
   <>
     <Icon icon="check" size="3x" />
     <Icon icon="anchor" size="3x" />
@@ -16,7 +32,7 @@ const defaultIcon = () => (
   </>
 );
 
-const iconWithTheme = () => (
+export const iconWithTheme = () => (
   <>
     <Icon icon="check" size="3x" theme="success" />
     <Icon icon="times" size="3x" theme="danger" />
@@ -25,14 +41,9 @@ const iconWithTheme = () => (
   </>
 );
 
-const iconWithAction = () => (
+export const iconWithAction = () => (
   <>
     <Icon icon="spinner" size="3x" spin theme="primary" />
     <Icon icon="spinner" pulse size="3x" theme="success" />
   </>
 );
-
-storiesOf('Icon Component', module)
-  .add('Icon', defaultIcon)
-  .add('不同主题的 Icon', iconWithTheme)
-  .add('更多行为的 Icon', iconWithAction);

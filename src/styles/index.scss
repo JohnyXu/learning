@@ -2,22 +2,25 @@
 @import 'variables';
 
 //layout
-@import 'reboot';
+@import 'reboot'; //样式的规格化
 
 //mixin
 @import 'mixin';
 
 // animation
 @import 'animation';
-
-// alert
-@import '../components/Alert/style';
-
 // button
+
 @import '../components/Button/style';
+
+//alert
+@import '../components/Alert/style';
 
 // menu
 @import '../components/Menu/style';
+
+// //navs
+// @import '../components/Tabs/style';
 
 // icon
 @import '../components/Icon/style';
@@ -25,11 +28,17 @@
 //input
 @import '../components/Input/style';
 
-//auto-complete
+// //auto-complete
 // @import '../components/AutoComplete/style';
 
-//upload
+// //select
+// @import '../components/Select/style';
+
+// //upload
 // @import '../components/Upload/style';
 
 //progress
 @import '../components/Progress/style';
+
+// // form
+// @import '../components/Form/style';

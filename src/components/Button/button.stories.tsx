@@ -1,28 +1,38 @@
-import React from 'react'
-import { storiesOf } from '@storybook/react'
-import { action } from '@storybook/addon-actions'
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import Button from './button';
 
-import Button from './button'
+export default {
+  title: 'Button',
+  id: 'Button',
+  component: Button,
+} as ComponentMeta<typeof Button>;
 
-const defaultButton = () => (
-  <Button onClick={action('clicked')}> default button </Button>
-)
+const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-const buttonWithSize = () => (
+export const DefaultButton = Template.bind({});
+DefaultButton.args = {
+  text: 'Default Button',
+};
+DefaultButton.storyName = '默认样式';
+
+export const SButtonWithSize = () => (
   <>
     <Button size="lg"> large button </Button>
     <Button size="sm"> small button </Button>
   </>
-)
+);
+SButtonWithSize.storyName = '不同尺寸';
 
-const buttonWithType = () => (
+export const SButtonWithType = () => (
   <>
     <Button btnType="primary"> primary button </Button>
     <Button btnType="danger"> danger button </Button>
-    <Button btnType="link" href="https://google.com"> link button </Button>
+    <Button btnType="link" href="https://google.com">
+      {' '}
+      link button{' '}
+    </Button>
   </>
-)
-storiesOf('Button Component', module)
-  .add('Button', defaultButton)
-  .add('不同尺寸的 Button', buttonWithSize)
-  .add('不同类型的 Button', buttonWithType)
+);
+
+SButtonWithType.storyName = '不同样式';
