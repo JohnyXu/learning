@@ -1,8 +1,7 @@
+import React from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
-  console.log(error);
-  console.log(resetErrorBoundary);
   return (
     <div role="alert">
       <p>Something went wrong:</p>
@@ -12,25 +11,23 @@ function ErrorFallback({ error, resetErrorBoundary }) {
   );
 }
 
-function Counter(props) {
-  throw new Error('Simulated error.');
+function Bomb() {
+  throw new Error('💥 CABOOM 💥');
 }
 
 function App() {
-  const ui = (
-    <ErrorBoundary
-      FallbackComponent={ErrorFallback}
-      onReset={() => {
-        console.log('onReset');
-        // reset the state of your app so the error doesn't happen again
-      }}
-    >
-      <Counter />
-    </ErrorBoundary>
+  const [explode, setExplode] = React.useState(false);
+  return (
+    <div>
+      <button onClick={() => setExplode((e) => !e)}>toggle explode</button>
+      <ErrorBoundary
+        FallbackComponent={ErrorFallback}
+        onReset={() => setExplode(false)}
+        resetKeys={[explode]}
+      >
+        {explode ? <Bomb /> : null}
+      </ErrorBoundary>
+    </div>
   );
-
-  const enable = true;
-  return <div className="App">hello{enable ? ui : <p>test</p>}</div>;
 }
-
 export default App;
